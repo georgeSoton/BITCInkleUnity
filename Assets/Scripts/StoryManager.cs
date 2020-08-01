@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 using System.Runtime.InteropServices;
+using System;
 
 public class StoryManager : MonoBehaviour
 {
@@ -11,34 +12,53 @@ public class StoryManager : MonoBehaviour
     public Story story;
     [SerializeField]
     Color DefaultLineColor = Color.white;
-    public StoryManager()
+
+    public class line
     {
-        DontDestroyOnLoad(this.gameObject);
+        public string text;
+        public List<string> tags;
+    }
+
+    public List<line> LinesSoFar = new List<line>(); 
+
+    public void Awake()
+    {
         story = new Story(StoryJson.text);
+        DontDestroyOnLoad(this.gameObject);
     }
-    /// <summary>
-    /// Return the contents of a tag from the current ink where the tag is written in the form:
-    /// <para>
-    /// #tagname: tag contents
-    /// </para>
-    /// <para>
-    /// Case insensitive.
-    /// </para>
-    /// If the tag is not present on this line, <see langword="null"/> will be returned.
-    /// </summary>
-    /// <param name="tagname"></param>
-    /// <returns></returns>
-    public string GetTag(string tagname)
+
+    public void Start()
     {
-        var tags = story.currentTags;
-        var found = tags.Find(x => x.ToLower().StartsWith(tagname.ToLower()));
-        if (found == null)
+        AdvanceStory();
+    }
+
+    void AdvanceStory()
+    {
+        while (story.canContinue)
         {
-            return null;
+            var text = story.Continue();
+            var nextline = new line { text = text, tags = story.currentTags };
+            onNewStoryLineAdded.Invoke(this, nextline);
+            LinesSoFar.Add(nextline);
         }
-        else
+        if (story.currentChoices.Count > 0)
         {
-            return found.Substring(tagname.Length + 1).Trim();
+            onNewChoicesAvailable.Invoke(this, story.currentChoices);
         }
     }
+
+    public void ProceedWithChoice(int idx)
+    {
+        onChoiceMade.Invoke(this, story.currentChoices[idx]);
+        story.ChooseChoiceIndex(idx);
+        AdvanceStory();
+    }
+    public delegate void NewStoryLineAddedEventHandler(object sender, line l);
+    public event NewStoryLineAddedEventHandler onNewStoryLineAdded;
+
+    public delegate void NewChoicesAvailableEventHandler(object sender, List<Choice> choices);
+    public event NewChoicesAvailableEventHandler onNewChoicesAvailable;
+
+    public delegate void ChoiceMadeEventHandler(object sender,  Choice choice);
+    public event ChoiceMadeEventHandler onChoiceMade;
 }
