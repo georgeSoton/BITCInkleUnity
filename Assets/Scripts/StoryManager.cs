@@ -38,7 +38,7 @@ public class StoryManager : MonoBehaviour
         }
         else
         {
-            return found.Substring(tagname.Length + 1).Trim()
+            return found.Substring(tagname.Length + 1).Trim();
         }
     }
 }
