@@ -1,3 +1,4 @@
 [submodule "Assets/Ink"]
 	path = Assets/Ink
 	url = https://github.com/georgeSoton/BITCInkleStory.git
+	ignore = dirty
