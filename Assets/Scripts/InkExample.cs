@@ -3,19 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Ink.Runtime;
+using System.Threading;
 
 public class InkExample : MonoBehaviour
 {
     public TextAsset inkJSONAsset;
+    public const float buttonSpacing = 0.3f;
+    [SerializeField] private Text displayText;
+    private TextWriter textWriter;
     private Story story;
+    private List<Button> buttonList;
+
     public Button buttonPrefab;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         // Load the next story block
         story = new Story(inkJSONAsset.text);
-
+        textWriter = GetComponent<TextWriter>();
+        buttonList = new List<Button>();
         // Start the refresh cycle
         refresh();
 
@@ -27,27 +35,31 @@ public class InkExample : MonoBehaviour
     //  - Iterate through any choices and create listeners on them
     void refresh()
     {
-        // Clear the UI
-        clearUI();
+        //Debug.Log(string.Format("Before {0}",buttonList.Count));
+        // Clear the previous choises
+        for (int j = buttonList.Count-1; j>-1; j--){
+            Debug.Log(j);
+            buttonList[j].onClick.RemoveAllListeners();
+            Destroy(buttonList[j].gameObject);
+            buttonList.RemoveAt(j);
+        }
+        //Debug.Log(buttonList.Count);
+        
+        
+        //clearUI();
 
-        // Create a new GameObject
-        GameObject newGameObject = new GameObject("TextChunk");
-        // Set its transform to the Canvas (this)
-        newGameObject.transform.SetParent(this.transform, false);
-
-        // Add a new Text component to the new GameObject
-        Text newTextObject = newGameObject.AddComponent<Text>();
-        // Set the fontSize larger
-        newTextObject.fontSize = 24;
         // Set the text from new story block
-        newTextObject.text = getNextStoryBlock();
-        // Load Arial from the built-in resources
-        newTextObject.font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+        textWriter.AddWriter(displayText, getNextStoryBlock());
 
+        int i = 0;
         foreach (Choice choice in story.currentChoices)
         {
             Button choiceButton = Instantiate(buttonPrefab) as Button;
+            buttonList.Add(choiceButton);
             choiceButton.transform.SetParent(this.transform, false);
+
+            //offset buttons below each other 
+            choiceButton.transform.position += new Vector3(0f,buttonSpacing*i);
 
             // Gets the text from the button prefab
             Text choiceText = choiceButton.GetComponentInChildren<Text>();
@@ -57,7 +69,8 @@ public class InkExample : MonoBehaviour
             choiceButton.onClick.AddListener(delegate {
                 OnClickChoiceButton(choice);
             });
-
+            
+            i++;
         }
     }
 

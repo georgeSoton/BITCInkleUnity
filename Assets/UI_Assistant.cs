@@ -18,6 +18,6 @@ public class UI_Assistant : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        textWriter.AddWriter(messageText, messageText.text, 0.1f);
+        //textWriter.AddWriter(messageText, messageText.text, 0.01f);
     }
 }
