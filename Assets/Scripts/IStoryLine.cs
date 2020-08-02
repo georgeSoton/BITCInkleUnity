@@ -5,5 +5,4 @@ using UnityEngine;
 public interface IStoryLine
 {
     void SetContent(StoryManager.line line);
-    void AddContent(StoryManager.line line);
 }

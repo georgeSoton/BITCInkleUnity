@@ -1,6 +1,7 @@
 ﻿using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,7 @@ public class StoryBoxSpawner : MonoBehaviour
         var stryline = newline.GetComponent<IStoryLine>();
         stryline.SetContent(line);
         storylines.Add(newline);
+
         if (storylines.Count > 15)
         {
             var rt = (RectTransform)transform;
