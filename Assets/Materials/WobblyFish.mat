@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Octopus
+  m_Name: WobblyFish
   m_Shader: {fileID: -6465566751694194690, guid: 8745bf14fb5aee643960513723433192,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -37,7 +37,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6aeaec0accc0a1b45910c6ab4aa5bcc1, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
