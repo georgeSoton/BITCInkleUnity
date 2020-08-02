@@ -44,7 +44,7 @@ public class StoryLine : MonoBehaviour, IStoryLine
         var found = ActorColours.Find(x => line.tags.Contains(x.tag));
         if (found != null)
         {
-            texttoadd = ColourTag(texttoadd, found.colour);
+            mytext.color = found.colour;
         }
         mytext.text = mytext.text + " " + texttoadd;
     }
@@ -56,10 +56,6 @@ public class StoryLine : MonoBehaviour, IStoryLine
     string ItalicTag(string inp)
     {
         return "<i>" + inp + "</i>";
-    }
-    string ColourTag(string inp, Color colour)
-    {
-        return string.Format("<color=#{0}>{1}</color>", ColorUtility.ToHtmlStringRGBA(colour), inp);
     }
 
 }

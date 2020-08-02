@@ -36,13 +36,7 @@ public class StoryManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void Start()
-    {
-        StopCoroutine("AdvanceStory");
-        StartCoroutine("AdvanceStory");
-    }
-
-    IEnumerator AdvanceStory()
+    public IEnumerator AdvanceStory()
     {
         while (story.canContinue)
         {
