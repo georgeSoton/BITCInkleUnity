@@ -1194,6 +1194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitionAnimator: {fileID: 1110768345}
+  transitionDelaySeconds: 2
+  isLoading: 0
 --- !u!1001 &1782489072
 PrefabInstance:
   m_ObjectHideFlags: 0

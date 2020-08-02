@@ -10,6 +10,7 @@ public class StoryManager : MonoBehaviour
     [SerializeField]
     TextAsset StoryJson;
     public Story story;
+    private TransitionHandler transitionHandler;
 
     public class line
     {
@@ -30,21 +31,31 @@ public class StoryManager : MonoBehaviour
 
     public void Awake()
     {
+        transitionHandler = GetComponent<TransitionHandler>();
         story = new Story(StoryJson.text);
         DontDestroyOnLoad(this.gameObject);
     }
 
     public void Start()
     {
-        AdvanceStory();
+        StartCoroutine("AdvanceStory");
     }
 
-    void AdvanceStory()
+    IEnumerator AdvanceStory()
     {
         while (story.canContinue)
         {
             var text = story.Continue();
             var nextline = new line { text = text, tags = story.currentTags };
+            var targetScene = nextline.GetTagValue("scene");
+            if (targetScene != null)
+            {
+                Debug.Log(targetScene);
+                transitionHandler.isLoading = true;
+                StartCoroutine(transitionHandler.LoadScene(transitionHandler.sceneNameToEnum[targetScene]));
+                yield return new WaitUntil(() => transitionHandler.isLoading == false);
+            }
+
             onNewStoryLineAdded.Invoke(this, nextline);
             LinesSoFar.Add(nextline);
         }
@@ -58,7 +69,7 @@ public class StoryManager : MonoBehaviour
     {
         onChoiceMade.Invoke(this, story.currentChoices[idx]);
         story.ChooseChoiceIndex(idx);
-        AdvanceStory();
+        StartCoroutine("AdvanceStory");
     }
     public delegate void NewStoryLineAddedEventHandler(object sender, line l);
     public event NewStoryLineAddedEventHandler onNewStoryLineAdded;

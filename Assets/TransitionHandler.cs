@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.WSA.Input;
@@ -8,8 +10,10 @@ using UnityEngine.XR.WSA.Input;
 public class TransitionHandler : MonoBehaviour
 {
     public Animator transitionAnimator;
+    public float transitionDelaySeconds;
 
     StoryManager storymanager;
+    public bool isLoading;
 
     public enum Scene
     {
@@ -23,12 +27,14 @@ public class TransitionHandler : MonoBehaviour
         {"PrologueNet", Scene.TransitionTestTarget},
     };
 
+    
     private void Awake()
     {
-        storymanager = FindObjectOfType<StoryManager>();
-        storymanager.onNewStoryLineAdded += SceneTransition;
+        isLoading = false;
+        //storymanager = FindObjectOfType<StoryManager>();
+        //storymanager.onNewStoryLineAdded += SceneTransition;
     }
-
+    /*
     void SceneTransition(object sender, StoryManager.line line)
     {
         var targetScene = line.GetTagValue("scene");
@@ -39,7 +45,7 @@ public class TransitionHandler : MonoBehaviour
         }
         
     }
-
+    */
     public void FadeIn()
     {
         transitionAnimator.SetBool("FadeToBlack", false);
@@ -52,11 +58,13 @@ public class TransitionHandler : MonoBehaviour
 
     public IEnumerator LoadScene(Scene scene)
     {
+        yield return new WaitForSeconds(transitionDelaySeconds);
         FadeOut();
         yield return new WaitUntil(() => transitionAnimator.GetBool("Faded") == true);
         Debug.Log(string.Format("Loading Scene {0}", scene));
         SceneManager.LoadScene(scene.ToString());
         FadeIn();
+        isLoading = false;
     }
 
 }
