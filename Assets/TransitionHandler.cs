@@ -7,7 +7,9 @@ using UnityEngine.XR.WSA.Input;
 
 public class TransitionHandler : MonoBehaviour
 {
-    public Animator transitionAnimator; 
+    public Animator transitionAnimator;
+
+    StoryManager storymanager;
 
     public enum Scene
     {
@@ -15,17 +17,27 @@ public class TransitionHandler : MonoBehaviour
         TransitionTestTarget,
     }
 
-
-    void Start()
+    public Dictionary<string, Scene> sceneNameToEnum = new Dictionary<string, Scene>()
     {
-        FadeIn();
-        Invoke("Test", 2f);
-        
+        {"PrologueStart", Scene.TransitionTestStart},
+        {"PrologueNet", Scene.TransitionTestTarget},
+    };
+
+    private void Awake()
+    {
+        storymanager = FindObjectOfType<StoryManager>();
+        storymanager.onNewStoryLineAdded += SceneTransition;
     }
 
-    private void Test()
+    void SceneTransition(object sender, StoryManager.line line)
     {
-        StartCoroutine(this.LoadScene(Scene.TransitionTestTarget));
+        var targetScene = line.GetTagValue("scene");
+        if(targetScene!= null)
+        {
+            Debug.Log(targetScene);
+            StartCoroutine(this.LoadScene(sceneNameToEnum[targetScene]));
+        }
+        
     }
 
     public void FadeIn()
