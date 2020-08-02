@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class StoryBoxSpawner : MonoBehaviour
 {
     StoryManager storymanager;
-    Text mytext;
 
     [SerializeField]
     GameObject StoryLinePrefab;
@@ -22,7 +21,6 @@ public class StoryBoxSpawner : MonoBehaviour
     void Awake()
     {
         storymanager = FindObjectOfType<StoryManager>();
-        mytext = GetComponent<Text>();
         storymanager.onNewStoryLineAdded += AddStory;
         storymanager.onNewChoicesAvailable += AddChoices;
     }

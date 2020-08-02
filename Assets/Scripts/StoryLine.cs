@@ -9,6 +9,8 @@ public class StoryLine : MonoBehaviour, IStoryLine
     Text mytext;
     [SerializeField]
     Color PlayerTextColour;
+    [SerializeField]
+    Color OctoTextColour;
     private void Awake()
     {
         mytext = GetComponent<Text>();
@@ -23,6 +25,10 @@ public class StoryLine : MonoBehaviour, IStoryLine
         if (line.tags.Contains("player"))
         {
             mytext.color = PlayerTextColour;
+        }
+        if (line.tags.Contains("octopus"))
+        {
+            mytext.color = OctoTextColour;
         }
         if (line.tags.Contains("action"))
         {

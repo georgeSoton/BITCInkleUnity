@@ -10,13 +10,20 @@ public class StoryManager : MonoBehaviour
     [SerializeField]
     TextAsset StoryJson;
     public Story story;
-    [SerializeField]
-    Color DefaultLineColor = Color.white;
 
     public class line
     {
         public string text;
         public List<string> tags;
+        
+        public string GetTagValue(string tagname)
+        {
+            var found = tags.Find(x => x.StartsWith(tagname));
+            if (found == null) { return null; } else
+            {
+                return found.Substring(tagname.Length + 1).Trim();
+            }
+        }
     }
 
     public List<line> LinesSoFar = new List<line>(); 
