@@ -28,12 +28,12 @@ public class StoryBoxSpawner : MonoBehaviour
 
     void AddStory(object sender, StoryManager.line line)
     {
-        if (NewBlock)
-        {
-            var div = Instantiate(DividerPrefab, GetComponent<Transform>());
-            storylines.Add(div);
-            NewBlock = false;
-        }
+        //if (NewBlock)
+        //{
+        //    var div = Instantiate(DividerPrefab, GetComponent<Transform>());
+        //    storylines.Add(div);
+        //    NewBlock = false;
+        //}
         var newline = Instantiate(StoryLinePrefab, GetComponent<Transform>());
         var stryline = newline.GetComponent<IStoryLine>();
         stryline.SetContent(line);

@@ -36,10 +36,10 @@ public class ScrollViewToBottom : MonoBehaviour
         if (!userInterrupted)
         {
             var vpos = myScroller.verticalNormalizedPosition;
-            if (vpos < 0.01) { vpos = 0; }
+            if (vpos < 0.01) { vpos = -0.05f; }
             else
             {
-                myScroller.verticalNormalizedPosition = vpos * (1f - speed);
+                myScroller.verticalNormalizedPosition = ((vpos+0.05f) * (1f - speed)) -0.05f;
             }
         }
     }

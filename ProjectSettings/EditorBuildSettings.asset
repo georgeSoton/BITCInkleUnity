@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TransitionTestStart.unity
     guid: 63bc0e3565ad91d41b5e601e2da4fca1
   - enabled: 1
-    path: Assets/Scenes/TransitionTestTarget.unity
+    path: Assets/Scenes/TransitionTest2.unity
     guid: 6f5d51d4c619a8a4a852a0a9d890e99c
+  - enabled: 1
+    path: Assets/Scenes/TransitionTest1.unity
+    guid: 33db95c2807c50447bc597178b6e9036
   m_configObjects: {}

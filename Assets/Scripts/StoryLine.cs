@@ -10,10 +10,6 @@ public class StoryLine : MonoBehaviour, IStoryLine
     // Start is called before the first frame update
     Text mytext;
     [SerializeField]
-    Color PlayerTextColour;
-    [SerializeField]
-    Color OctoTextColour;
-    [SerializeField]
     List<ColourPairing> ActorColours;
 
     [Serializable]

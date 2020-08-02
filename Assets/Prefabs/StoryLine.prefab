@@ -93,10 +93,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerTextColour: {r: 0.51882344, g: 0.7242536, b: 0.8396226, a: 1}
-  OctoTextColour: {r: 0.8396226, g: 0.33664113, b: 0.3509747, a: 1}
+  OctoTextColour: {r: 0.5377358, g: 0.1953097, b: 0.21813808, a: 1}
   ActorColours:
   - tag: octopus
-    colour: {r: 0.990566, g: 0.13550198, b: 0.13550198, a: 1}
+    colour: {r: 0.8301887, g: 0.31719476, b: 0.35257384, a: 1}
   - tag: player
     colour: {r: 0.5176471, g: 0.7254902, b: 0.8392157, a: 1}
 --- !u!114 &6049325120421274091

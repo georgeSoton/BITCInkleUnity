@@ -38,6 +38,7 @@ public class StoryManager : MonoBehaviour
 
     public void Start()
     {
+        StopCoroutine("AdvanceStory");
         StartCoroutine("AdvanceStory");
     }
 
@@ -52,7 +53,7 @@ public class StoryManager : MonoBehaviour
             {
                 Debug.Log(targetScene);
                 transitionHandler.isLoading = true;
-                StartCoroutine(transitionHandler.LoadScene(transitionHandler.sceneNameToEnum[targetScene]));
+                StartCoroutine(transitionHandler.LoadScene(targetScene));
                 yield return new WaitUntil(() => transitionHandler.isLoading == false);
             }
 
