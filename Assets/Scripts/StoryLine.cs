@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,15 @@ public class StoryLine : MonoBehaviour, IStoryLine
     Color PlayerTextColour;
     [SerializeField]
     Color OctoTextColour;
+    [SerializeField]
+    List<ColourPairing> ActorColours;
+
+    [Serializable]
+    public class ColourPairing
+    {
+        public string tag;
+        public Color colour = Color.white;
+    }
     private void Awake()
     {
         mytext = GetComponent<Text>();
@@ -22,21 +32,30 @@ public class StoryLine : MonoBehaviour, IStoryLine
     public void SetContent(StoryManager.line line)
     {
         mytext.text = line.text.Trim();
-        if (line.tags.Contains("player"))
+        if (line.tags.Contains("italic"))
         {
-            mytext.color = PlayerTextColour;
+            if (line.tags.Contains("bold"))
+            { 
+                mytext.fontStyle = FontStyle.BoldAndItalic;
+            } else
+            {
+                mytext.fontStyle = FontStyle.Italic;
+            }
+        } else if (line.tags.Contains("bold"))
+        {
+            mytext.fontStyle = FontStyle.Bold;
         }
-        if (line.tags.Contains("octopus"))
+
+        var found = ActorColours.Find(x => line.tags.Contains(x.tag));
+        if (found != null)
         {
-            mytext.color = OctoTextColour;
-        }
-        if (line.tags.Contains("action"))
-        {
-            mytext.fontStyle = FontStyle.Italic;
+            mytext.color = found.colour;
         }
     }
-    // Update is called once per frame
-    void Update()
+
+    public void AddContent(StoryManager.line line)
     {
+
     }
+
 }
