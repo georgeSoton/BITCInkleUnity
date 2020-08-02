@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChoiceLine : MonoBehaviour
+public class ChoiceLine : MonoBehaviour, IChoiceLine
 {
     StoryManager storymanager;
     Text mytext;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoryLine : MonoBehaviour
+public class StoryLine : MonoBehaviour, IStoryLine
 {
     // Start is called before the first frame update
     Text mytext;

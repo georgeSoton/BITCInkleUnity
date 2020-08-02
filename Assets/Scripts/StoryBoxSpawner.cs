@@ -36,9 +36,9 @@ public class StoryBoxSpawner : MonoBehaviour
             NewBlock = false;
         }
         var newline = Instantiate(StoryLinePrefab, GetComponent<Transform>());
-        var stryline = newline.GetComponent<StoryLine>();
+        var stryline = newline.GetComponent<IStoryLine>();
         stryline.SetContent(line);
-        storylines.Add(stryline.gameObject);
+        storylines.Add(newline);
         if (storylines.Count > 15)
         {
             var rt = (RectTransform)transform;
@@ -55,7 +55,7 @@ public class StoryBoxSpawner : MonoBehaviour
         foreach (var ch in choices)
         {
             var newline = Instantiate(ChoicePrefab, GetComponent<Transform>());
-            newline.GetComponent<ChoiceLine>().SetContent(ch);
+            newline.GetComponent<IChoiceLine>().SetContent(ch);
         }
     }
 
