@@ -1,24 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.XR.WSA.Input;
 
 public class TransitionHandler : MonoBehaviour
 {
-
     public Animator transitionAnimator; 
-    // Start is called before the first frame update
-    void Start()
+
+    public enum Scene
     {
-
-        Invoke("FadeOut", 2f);
-        Invoke("FadeIn", 4f);
-
+        TransitionTestStart,
+        TransitionTestTarget,
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void Start()
     {
+        FadeIn();
+        Invoke("Test", 2f);
         
+    }
+
+    private void Test()
+    {
+        StartCoroutine(this.LoadScene(Scene.TransitionTestTarget));
     }
 
     public void FadeIn()
@@ -30,4 +37,14 @@ public class TransitionHandler : MonoBehaviour
     {
         transitionAnimator.SetBool("FadeToBlack", true);
     }
+
+    public IEnumerator LoadScene(Scene scene)
+    {
+        FadeOut();
+        yield return new WaitUntil(() => transitionAnimator.GetBool("Faded") == true);
+        Debug.Log(string.Format("Loading Scene {0}", scene));
+        SceneManager.LoadScene(scene.ToString());
+        FadeIn();
+    }
+
 }
