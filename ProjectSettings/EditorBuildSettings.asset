@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainTankMantis.unity
     guid: 72966dabd02c859429723bbacc3faa93
+  - enabled: 1
+    path: Assets/Scenes/EndOfGame.unity
+    guid: 3a7409b46d65cfd4fbee7c07e37e86cd
   m_configObjects: {}

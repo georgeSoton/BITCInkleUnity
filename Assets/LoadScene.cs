@@ -23,7 +23,7 @@ public class LoadScene : MonoBehaviour
 
     void LoadThisScene()
     {
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene(sceneName);
     }
     
 }

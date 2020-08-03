@@ -1532,6 +1532,7 @@ GameObject:
   - component: {fileID: 1616678025}
   - component: {fileID: 1616678024}
   - component: {fileID: 1616678026}
+  - component: {fileID: 1616678027}
   m_Layer: 0
   m_Name: StoryManager
   m_TagString: Untagged
@@ -1551,7 +1552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363ff1772d677b94494aff7e711d8458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StoryJson: {fileID: 4900000, guid: b7663ce55a83e7c4da5b84296e00f239, type: 3}
+  StoryJson: {fileID: 4900000, guid: dba24cb6dd14dbe47bee0972d958b534, type: 3}
 --- !u!4 &1616678025
 Transform:
   m_ObjectHideFlags: 0
@@ -1581,6 +1582,18 @@ MonoBehaviour:
   transitionAnimator: {fileID: 1110768345}
   transitionDelaySeconds: 0
   isLoading: 0
+--- !u!114 &1616678027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616678023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cba3e41badd2cf479bcd6803181a796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1696394576
 GameObject:
   m_ObjectHideFlags: 0

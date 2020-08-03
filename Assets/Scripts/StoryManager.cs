@@ -61,6 +61,15 @@ public class StoryManager : MonoBehaviour
         {
             onNewChoicesAvailable.Invoke(this, story.currentChoices);
         }
+        else
+        {
+            transitionHandler.isLoading = true;
+            var spawner = GameObject.Find("Character Spawner").GetComponentInChildren<CharacterSpawner>();
+            spawner.RightRemove();
+            spawner.LeftRemove();
+            StartCoroutine(transitionHandler.LoadScene("EndOfGame"));
+            yield return new WaitUntil(() => transitionHandler.isLoading == false);
+        }
     }
 
     public void ProceedWithChoice(int idx)
