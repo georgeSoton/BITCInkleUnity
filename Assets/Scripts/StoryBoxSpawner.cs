@@ -28,6 +28,16 @@ public class StoryBoxSpawner : MonoBehaviour
 
     void AddStory(object sender, StoryManager.line line)
     {
+        if (NewBlock)
+        {    
+            foreach (var sline in storylines)
+            {
+                Destroy(sline.GetComponent<FadeInText>());
+                var txt = sline.GetComponent<Text>();
+                txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, 0.3f);
+            }
+        }
+        NewBlock = false;
         if (line.text.Trim().Length == 0) { return; }
         var newline = Instantiate(StoryLinePrefab, GetComponent<Transform>());
         var stryline = newline.GetComponent<IStoryLine>();

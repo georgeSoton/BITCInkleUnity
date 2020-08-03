@@ -29,9 +29,9 @@ public class CharacterSpawner : MonoBehaviour
         
         if (right != null)
         {
-            if ((rightName == null) || (rightName != right))
+            if ((rightName == null) || (rightName != right.ToLower()))
             {
-                rightName = right;
+                rightName = right.ToLower();
                 RightRemove();
                 GameObject prefab = (GameObject)Resources.Load(string.Format("Characters/{0}", right));
                 if (prefab != null) { RightSpawn(prefab); }
@@ -39,9 +39,9 @@ public class CharacterSpawner : MonoBehaviour
         }
         if (left != null)
         {
-            if ((leftName == null) || (leftName != left))
+            if ((leftName == null) || (leftName != left.ToLower()))
             {
-                leftName = left;
+                leftName = left.ToLower();
                 LeftRemove();
                 GameObject prefab = (GameObject)Resources.Load(string.Format("Characters/{0}", left));
                 if (prefab != null) { LeftSpawn(prefab); }
