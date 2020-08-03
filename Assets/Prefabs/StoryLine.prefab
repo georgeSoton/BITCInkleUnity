@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
+  m_Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -92,13 +92,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdbfdfc9e3637b34d89da87beee8a1d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTextColour: {r: 0.51882344, g: 0.7242536, b: 0.8396226, a: 1}
-  OctoTextColour: {r: 0.5377358, g: 0.1953097, b: 0.21813808, a: 1}
   ActorColours:
   - tag: octopus
     colour: {r: 0.8301887, g: 0.31719476, b: 0.35257384, a: 1}
   - tag: player
-    colour: {r: 0.5176471, g: 0.7254902, b: 0.8392157, a: 1}
+    colour: {r: 0.5798772, g: 0.7830189, b: 0.7830189, a: 1}
+  - tag: goby
+    colour: {r: 0.79235685, g: 0.8490566, b: 0.4285333, a: 1}
+  - tag: pufferfish
+    colour: {r: 0.8207547, g: 0.70759225, b: 0.4219918, a: 1}
+  - tag: mantis
+    colour: {r: 0.254539, g: 0.8301887, b: 0.5934295, a: 1}
+  - tag: parrotfish
+    colour: {r: 0.40997687, g: 0.6510893, b: 0.7830189, a: 1}
+  - tag: youngshoal
+    colour: {r: 0.8301887, g: 0.5162732, b: 0.26237094, a: 1}
+  - tag: oldshoal
+    colour: {r: 0.61052966, g: 0.31585974, b: 0.735849, a: 1}
 --- !u!114 &6049325120421274091
 MonoBehaviour:
   m_ObjectHideFlags: 0

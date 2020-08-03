@@ -74,11 +74,11 @@ MonoBehaviour:
     jsonAssetPath: {fileID: 0}
     jsonAsset: {fileID: 0}
   - compileAutomatically: 0
-    inkAsset: {fileID: 102900000, guid: 57b5d3bd0e4f6de429406bab566d64a3, type: 3}
+    inkAsset: {fileID: 102900000, guid: f8db2d429b31da84699cf7c562d23b15, type: 3}
     jsonAssetPath: {fileID: 0}
     jsonAsset: {fileID: 0}
   - compileAutomatically: 0
-    inkAsset: {fileID: 102900000, guid: f8db2d429b31da84699cf7c562d23b15, type: 3}
+    inkAsset: {fileID: 102900000, guid: 57b5d3bd0e4f6de429406bab566d64a3, type: 3}
     jsonAssetPath: {fileID: 0}
     jsonAsset: {fileID: 0}
   pendingCompilationStack: []
