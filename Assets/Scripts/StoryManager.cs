@@ -42,6 +42,7 @@ public class StoryManager : MonoBehaviour
         {
             var text = story.Continue();
             var nextline = new line { text = text, tags = story.currentTags };
+            if ((nextline.text.Length==0) && (nextline.tags.Count==0)) { continue; }
             var targetScene = nextline.GetTagValue("scene");
             if (targetScene != null)
             {

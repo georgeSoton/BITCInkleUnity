@@ -26,12 +26,13 @@ public class StoryLine : MonoBehaviour, IStoryLine
     public void SetContent(StoryManager.line line)
     {
         mytext.text = "";
+        if (line.text.Trim().Length == 0) { Destroy(gameObject); }
         AddContent(line);
     }
 
     public void AddContent(StoryManager.line line)
     {
-        var texttoadd = line.text;
+        var texttoadd = line.text.Trim();
         if (line.tags.Contains("italic"))
         {
             texttoadd = ItalicTag(texttoadd);

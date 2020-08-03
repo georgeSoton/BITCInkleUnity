@@ -51,10 +51,12 @@ public class CharacterSpawner : MonoBehaviour
 
     public void RightRemove()
     {
+        rightName = null;
         if (RightCharacter != null) { RightCharacter.GetComponentInChildren<IExitCharacter>()?.Exit(); RightCharacter = null; }
     }
     public void LeftRemove()
     {
+        leftName = null;
         if (LeftCharacter != null) { LeftCharacter.GetComponentInChildren<IExitCharacter>()?.Exit(); LeftCharacter = null; }
     }
     void RightSpawn(GameObject prefab)
