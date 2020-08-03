@@ -31,20 +31,20 @@ public class CharacterSpawner : MonoBehaviour
         {
             if ((rightName == null) || (rightName != right.ToLower()))
             {
-                rightName = right.ToLower();
                 RightRemove();
                 GameObject prefab = (GameObject)Resources.Load(string.Format("Characters/{0}", right));
                 if (prefab != null) { RightSpawn(prefab); }
+                rightName = right.ToLower();
             }
         }
         if (left != null)
         {
             if ((leftName == null) || (leftName != left.ToLower()))
             {
-                leftName = left.ToLower();
                 LeftRemove();
                 GameObject prefab = (GameObject)Resources.Load(string.Format("Characters/{0}", left));
                 if (prefab != null) { LeftSpawn(prefab); }
+                leftName = left.ToLower();
             }
         }
     }
