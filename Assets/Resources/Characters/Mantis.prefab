@@ -485,7 +485,7 @@ Animator:
   m_GameObject: {fileID: 6715988306940097670}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2daa309b4893fe4eb7db23b49ce0a85, type: 2}
+  m_Controller: {fileID: 9100000, guid: 92292a2969a789c4c8e15e1a6af2898f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -530,8 +530,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -39930519
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f3732637ff4fa2f4c97cf64449362a64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -574,7 +574,7 @@ MonoBehaviour:
   - {fileID: 1762770107771757178}
   - {fileID: 39253555159399679}
   m_Bounds:
-    m_Center: {x: -1.6026688, y: 1.5681248, z: 0}
+    m_Center: {x: -1.6026697, y: 1.5681248, z: 0}
     m_Extent: {x: 6.482669, y: 4.838125, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1

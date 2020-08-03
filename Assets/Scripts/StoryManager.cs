@@ -47,6 +47,9 @@ public class StoryManager : MonoBehaviour
             {
                 Debug.Log(targetScene);
                 transitionHandler.isLoading = true;
+                var spawner = GameObject.Find("Character Spawner").GetComponentInChildren<CharacterSpawner>();
+                spawner.RightRemove();
+                spawner.LeftRemove();
                 StartCoroutine(transitionHandler.LoadScene(targetScene));
                 yield return new WaitUntil(() => transitionHandler.isLoading == false);
             }

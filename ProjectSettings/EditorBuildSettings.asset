@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OceanStart.unity
     guid: 340ab3c9cb23c5040b03a43929aa13e5
+  - enabled: 1
+    path: Assets/Scenes/AquariumFloor.unity
+    guid: be600a75f480eec44a90606619f7e962
+  - enabled: 1
+    path: Assets/Scenes/MainTank.unity
+    guid: 4039b907372587e46bd0336bdd0022b0
+  - enabled: 1
+    path: Assets/Scenes/MainTankMantis.unity
+    guid: 72966dabd02c859429723bbacc3faa93
   m_configObjects: {}

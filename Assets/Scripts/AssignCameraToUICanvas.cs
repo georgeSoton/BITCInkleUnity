@@ -10,5 +10,6 @@ public class AssignCameraToUICanvas : MonoBehaviour
     {
         GameObject.Find("UICanvas").GetComponent<Canvas>().worldCamera = GetComponent<Camera>();
         GameObject.Find("TransitionCanvas").GetComponent<Canvas>().worldCamera = GetComponent<Camera>();
+        GameObject.Find("CharacterCanvas").GetComponent<Canvas>().worldCamera = GetComponent<Camera>();
     }
 }
