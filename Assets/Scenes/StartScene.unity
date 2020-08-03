@@ -1506,7 +1506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d212dfff8fe5aa540906b26a4eca7643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TgtScene: OctopusFirstVisit.start_first_drain
+  TgtScene: Prologue
 --- !u!4 &1559129163
 Transform:
   m_ObjectHideFlags: 0
