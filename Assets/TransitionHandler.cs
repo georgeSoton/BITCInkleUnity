@@ -1,11 +1,8 @@
 ﻿using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR.WSA.Input;
 
 public class TransitionHandler : MonoBehaviour
 {
